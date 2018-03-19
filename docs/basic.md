@@ -10,7 +10,7 @@
     padding: 50px;
     margin: 0 auto;
   }  
-
+ 
   .rad-cons .circle-div{
     width: 100%;
     height: 100%;
