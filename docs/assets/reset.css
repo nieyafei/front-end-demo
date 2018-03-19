@@ -1,11 +1,11 @@
 .gt-container .gt-btn{
-    background-color: #EEB422;
+    background-color: #1E90FF;
 }
 .gt-container .gt-header-controls-tip,.gt-container a:hover{
-    color: #EEB422;
+    color: #1E90FF;
 }
 .gt-container .gt-svg svg{
-    fill: #EEB422;
+    fill: #1E90FF;
 }
 
 .vuep{flex-direction: column;height: inherit;}
