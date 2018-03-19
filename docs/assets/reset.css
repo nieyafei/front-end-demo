@@ -1,0 +1,35 @@
+.gt-container .gt-btn{
+    background-color: #EEB422;
+}
+.gt-container .gt-header-controls-tip,.gt-container a:hover{
+    color: #EEB422;
+}
+.gt-container .gt-svg svg{
+    fill: #EEB422;
+}
+
+.vuep{flex-direction: column;height: inherit;}
+.vuep-editor, .vuep-preview, .vuep-error{width: 100%;}
+.vuep-preview{background-color: #fff;}
+
+@keyframes cicleAnitation {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cicleAnitation {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
