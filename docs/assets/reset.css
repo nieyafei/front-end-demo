@@ -8,10 +8,11 @@
     fill: #1E90FF;
 }
 
+.markdown-section{max-width: 1000px;}
 .vuep{flex-direction: column;height: inherit;}
 .vuep-editor, .vuep-preview, .vuep-error{width: 100%;}
 .vuep-preview{background-color: #fff;}
-
+.vuep-preview, .vuep-error{padding: 0;}
 @keyframes cicleAnitation {
     0% {
         transform: rotate(0deg);
@@ -33,3 +34,4 @@
         -webkit-transform: rotate(360deg);
     }
 }
+

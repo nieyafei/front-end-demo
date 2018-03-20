@@ -1,148 +1,147 @@
-# 多彩圆环
+# 头像的动画
 
 <vuep template="#demo1"></vuep>
-
 <script v-pre type="text/x-template" id="demo1">
 <style>
-  .rad-cons{
-    width: 300px;
-    height: 300px;
-    padding: 50px;
-    margin: 0 auto;
-  }  
- 
-  .rad-cons .circle-div{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    animation: cicleAnitation 3s linear infinite;
-    -webkit-animation: cicleAnitation 3s linear infinite;
-  }
+.bgs-vue{
+  background-color:rgba(180,160,120,.1);padding-bottom:50px;
+}
+.conts{width: 880px;margin: 0 auto;}
+.conts .demo{
+  width: 200px;
+  float: left;
+  position: relative;
+}
+.conts:after{
+  content: "",
+  clear: both;
+  display:block;
+}
+.conts .demo1{
+  width: 200px;
+  height: 200px;
+  margin: 100px 10px 0 10px;
+  background-color: #ffffff;
+}
+.conts .demo1 img{
+  width: 100%;
+}
+.conts .demo1 .prot{
+  width: 100px;
+  height: 100px;
+  border:3px solid #fff;
+  overflow: hidden;
+  border-radius: 50% 0;
+  transition: all 0.5s;
+  position: absolute;
+  left:50px;
+  top:-50px;
+}
+.conts .demo1:hover .prot{
+  border-radius: 50%;
+  border-color: #42b983;
+}
+.conts .demo1 .spo{
+  width: 100%;
+  height: 5px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #42b983;
+  position: absolute;
+  bottom: 0px;
+  color: #fff;
+  font-size: 12px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.conts .demo1:hover .spo{
+  height: 30px;
+}
+.conts .demo1 .info{
+  text-align: center;
+  font-size: 12px;
+  padding:70px 15px 0 15px;
+}
+.conts .demo1 .info h3{
+  margin-top: 10px;
+}
+.conts .demo2 .prot{
+  border-radius: 0 50%;
+}
+.conts .demo2:hover .prot{
+  border-color: orange;
+}
+.conts .demo2 .spo{
+  background-color: orange;
+}
 
-  .rad-cons .circle-div > div.centerWrap {
-    width: 100%;
-    height: 100%;
-    border-radius: 120px;
-    box-shadow:0 0 0 50px #fff;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4), 0 0 0 50px #fff;
-  }
+.conts .demo3 .prot{
+  border-radius: 0;
+}
+.conts .demo3:hover .prot{
+  border-color: #1fb554;
+}
+.conts .demo3 .spo{
+  background-color: #1fb554;
+}
 
-  .rad-cons .circle-div > div.centerWrap:before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 84%;
-    height: 84%;
-    top: 8%;
-    left: 8%;
-    border-radius: 120px;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .circle-div  div {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-  }
-
-  .circle-div > div:first-child,
-  .circle-div > div:nth-child(4) {
-    left: 50%;
-    width: 57.74%;
-    margin-left: -28.87%;
-  }
-
-  .circle-div > div:first-child {
-    background-color: #ff0000;
-    background-image: linear-gradient(90deg, #ff0000 12%, #ffff00 88%);
-  }
-
-  .circle-div > div:nth-child(2) {
-    left: 50%;
-    transform-origin: bottom;
-    transform: skewX(150deg);
-    background-color: #ffff00;
-    background-image: linear-gradient(150deg, #ffff00 12%, #00ff00 88%);
-  }
-
-  .circle-div > div:nth-child(3) {
-    transform-origin: bottom;
-    transform: skewX(30deg);
-    background-color: #ff00ff;
-    background-image: linear-gradient(30deg, #ff00ff 12%, #ff0000 88%);
-  }
-
-  .circle-div > div:nth-child(4) {
-    top: 50%;
-    background-color: #0000ff;
-    background-image: linear-gradient(90deg, #0000ff 12%, #00ffff 88%);
-  }
-
-  .circle-div > div:nth-child(5) {
-    left: 50%;
-    top: 50%;
-    transform-origin: top;
-    transform: skewX(30deg);
-    background-color: #00ffff;
-    background-image: linear-gradient(30deg, #00ffff 12%, #00ff00 88%);
-  }
-
-  .circle-div > div:nth-child(6) {
-    top: 50%;
-    transform-origin: top;
-    transform: skewX(150deg);
-    background-color: #ff00ff;
-    background-image: linear-gradient(150deg, #ff00ff 12%, #0000ff 88%);
-  }
+.conts .demo4 .prot{
+  border-radius: 50% 50% 0 0;
+}
+.conts .demo4:hover .prot{
+  border-color: #e5642b;
+}
+.conts .demo4 .spo{
+  background-color: #e5642b;
+}
 </style>
 <template>
-<div class="rad-cons">
-  <div class='circle-div'>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div class="centerWrap"></div>
+<div class="bgs-vue">
+  <div class="conts">
+    <div class="demo demo1">
+      <div class="prot">
+          <img src="http://codehtml.cn/code-demo/resources/images/logo.png" alt="" srcset="">
+      </div>
+      <div class="info">
+        <h3>CODE</h3>
+        Whatever is worth doing is worth doing well.
+      </div>
+      <div class="spo">CODEHTML</div>
+    </div>
+
+    <div class="demo demo1 demo2">
+      <div class="prot">
+          <img src="http://codehtml.cn/code-demo/resources/images/logo.png" alt="" srcset="">
+      </div>
+      <div class="info">
+        <h3>CODE</h3>
+        Whatever is worth doing is worth doing well.
+      </div>
+      <div class="spo">CODEHTML</div>
+    </div>
+    <div class="demo demo1 demo3">
+      <div class="prot">
+          <img src="http://codehtml.cn/code-demo/resources/images/logo.png" alt="" srcset="">
+      </div>
+      <div class="info">
+        <h3>CODE</h3>
+        Whatever is worth doing is worth doing well.
+      </div>
+      <div class="spo">CODEHTML</div>
+    </div>
+    <div class="demo demo1 demo4">
+      <div class="prot">
+          <img src="http://codehtml.cn/code-demo/resources/images/logo.png" alt="" srcset="">
+      </div>
+      <div class="info">
+        <h3>CODE</h3>
+        Whatever is worth doing is worth doing well.
+      </div>
+      <div class="spo">CODEHTML</div>
+    </div>
+    <div style="clear:both;"></div>
   </div>
 </div>
 </template>
 <script></script>
 </script>
-
-### `动画keyframes`
-
-```
-@keyframes cicleAnitation {
-    0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@-webkit-keyframes cicleAnitation {
-    0% {
-        transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-```
-
-
-
-
-<!-- ### 浏览器兼容
-
-<iframe src="https://caniuse.bitsofco.de/embed/index.html?feat=css-gradients&amp;periods=future_1,current,past_1,past_2,past_3&amp;accessible-colours=false" frameborder="0" width="100%" height="436px"></iframe> -->
