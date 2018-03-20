@@ -19,6 +19,9 @@
 .vuep-editor, .vuep-preview, .vuep-error{width: 100%;}
 .vuep-preview{background-color: #fff;}
 .vuep-preview, .vuep-error{padding: 0;}
+
+.main-center{text-align: center;}
+
 @keyframes cicleAnitation {
     0% {
         transform: rotate(0deg);
@@ -41,3 +44,32 @@
     }
 }
 
+/* 跳动的幽灵 */
+@keyframes antion {
+    0%{
+        margin-top: 60px;
+    }
+    50%{
+        margin-top: 10px;
+    }
+    100%{
+        margin-top: 60px;
+    }
+  }
+  @keyframes antionBg {
+    0%{
+        margin-top: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+    50%{
+        margin-top: 60px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: scale(1);
+    }
+    100%{
+        margin-top: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+  }

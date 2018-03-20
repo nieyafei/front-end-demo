@@ -6,3 +6,6 @@
 
 * Background
   * [背景渐变(好看)](background-1.md)
+
+* 动画特效
+  * [跳动的幽灵](float-yl.md)
