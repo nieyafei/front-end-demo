@@ -1,3 +1,5 @@
+@import 'iconfont/iconfont.css';
+
 .gt-container .gt-btn{
     background-color: #1E90FF;
 }
@@ -12,6 +14,50 @@
 }
 .gt-container .gt-popup .gt-action.is--active:before{
     background-color: #1E90FF;
+}
+
+.sidebar .sidebar-nav li{
+    position: relative;
+}
+.sidebar .sidebar-nav li span{
+    display: inline-block;
+    color: #1E90FF;
+    position: absolute;
+    top:-2px;
+    left: -24px;
+    padding: 0;
+    font-size: 18px;
+    vertical-align: top;
+}
+
+.sidebar .sidebar-nav li span::before,.iconS::before{
+    font-family:"iconfont" !important;
+    font-size:20px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e612";
+    font-weight: normal;
+}
+
+.sidebar .sidebar-nav li span.new{
+    left: inherit;
+    right: 0;
+    top:0;
+}
+.sidebar .sidebar-nav li span.new::before{
+    content: "\e673";
+    font-size: 32px;
+}
+
+.iconS::before{
+    display: inline-block;
+    content: "\e70a";
+    font-size: 30px;
+    color: #1E90FF;
+}
+.sidebar ul li a .iconS::before{
+    font-size: 14px;
 }
 
 .markdown-section{max-width: 1000px;}
