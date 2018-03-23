@@ -8,5 +8,6 @@
   * [渐变色文本效果<span class="new"></span>](css3-font.md)
   * [背景渐变(好看)](background-1.md)
 
-* 动画特效
+* 基础和动画特效
   * [跳动的幽灵](float-yl.md)
+  * [box-reflect制作倒影<span class='new'></span>](css3-box-reflect.md)
