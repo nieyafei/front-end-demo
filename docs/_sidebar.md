@@ -2,6 +2,7 @@
 
 * 基础和动画特效
   * [圣杯布局](layout-sb.md)
+  * [双飞翼布局](layout-sfy.md)
   * [跳动的幽灵](float-yl.md)
   * [box-reflect制作倒影<span class='new'></span>](css3-box-reflect.md)
 
