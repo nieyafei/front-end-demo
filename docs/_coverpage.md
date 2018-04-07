@@ -7,4 +7,4 @@
 > **勿浅尝辄止**
 
 [GitHub](https://github.com/nieyafei/front-end-interview-css)
-[开始阅读](/basic)
+[开始阅读](/start)
