@@ -1,8 +1,8 @@
 ![logo](./web-logo-120.png ':no-zoom')
 
-# CSS3-ANIMATION
+# FRONT-END-DEMO
 
-> CSS3简单的动画特效，持续更新
+> 前端DEMO以及基础的效果，CSS3简单的动画特效，持续更新中
 
 > **勿浅尝辄止**
 
