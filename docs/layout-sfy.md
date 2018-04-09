@@ -2,7 +2,7 @@
 
 ?> 和`圣杯模式`的区别是，在中间的div元素里面添加一个`内容`的元素
 
-<vuep template="#demo1"></vuep>
+<vuep template="#demo1" class="full-page"></vuep>
 <script v-pre type="text/x-template" id="demo1">
 <style>
   .root{

@@ -1,6 +1,6 @@
 # 跳动的幽灵
 
-<vuep template="#demo1"></vuep>
+<vuep template="#demo1" class="full-page"></vuep>
 <script v-pre type="text/x-template" id="demo1">
 <style>
 .main1{

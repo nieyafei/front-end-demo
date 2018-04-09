@@ -61,8 +61,8 @@
 }
 
 .markdown-section{max-width: 1000px;}
-.vuep{flex-direction: column;height: inherit;}
-.vuep-editor, .vuep-preview, .vuep-error{width: 100%;}
+.full-page.vuep{flex-direction: column;height: inherit;}
+.full-page .vuep-editor,.full-page  .vuep-preview,.full-page  .vuep-error{width: 100%;}
 .vuep-preview{background-color: #fff;}
 .vuep-preview, .vuep-error{padding: 0;}
 

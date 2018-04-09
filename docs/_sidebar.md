@@ -1,4 +1,7 @@
   * [概述](start.md)
+  
+* NEWS
+  * [image-rendering 像素化图像像素](image-rendering.md)
 
 * 基础和动画特效
   * [圣杯布局](layout-sb.md)
