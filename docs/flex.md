@@ -392,6 +392,44 @@ display: -webkit-flex;
 </script>
 </script>
 
+- ### flex-flow
+
+> `flex-flow` 属性是 `flex-direction` 和 `flex-wrap` 属性的复合属性
+
+> `flex-flow` 属性用于设置或检索弹性盒模型对象的子元素排列方式。
+
+> `flex-direction` 属性规定灵活项目的方向。
+
+> `flex-wrap` 属性规定灵活项目是否拆行或拆列。
+
+?> flex-flow: `flex-direction` `flex-wrap`|`initial`|`inherit`;
+
+
+- ### order
+
+**属性定义项目的排列顺序, 数值越小，排列越靠前，默认为0**
+
+- ### flex-grow
+
+**属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大**
+
+- ### flex-shrink
+
+**属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小**
+
+- ### flex-basis
+
+**属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为`auto`，即项目的本来大小。**
+
+- ### flex
+
+?> `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选
+
+- ### align-self
+
+**属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的align-items属性，如果没有父元素，则等同于`stretch`。**
+
+?> align-self: `auto` | `flex-start` | `flex-end` | `center` | `baseline` | `stretch`;
 
 ### 兼容性
 
