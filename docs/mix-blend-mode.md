@@ -58,11 +58,11 @@
     bottom: 20px;
     right: 20px;
     background: rgba(15,53,124);
-    font: bolder 10vw 'Alfa Slab One';
+    font: bolder 150px 'Alfa Slab One';
     mix-blend-mode: multiply;
     color: #fff;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
   }
   .change-btn{
     text-align:center;
