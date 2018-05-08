@@ -5,6 +5,7 @@
   * [图片列表展示效果](css3-skew-image.md)
   * [Flex布局](flex.md)
   * [mix-blend-mode的使用](mix-blend-mode.md)
+  * [background-blend-mode的使用](background-blend-mode.md)
 
 * 基础和动画特效
   * [圣杯布局](layout-sb.md)
