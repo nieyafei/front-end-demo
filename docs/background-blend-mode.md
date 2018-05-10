@@ -69,8 +69,8 @@
 <template>
 <div class="demo-list">
   <div class="change-btn">
-    <input type="radio" name="radio1" @change="changeInput" value="normal" checked/>normal(正常)
-    <input type="radio" name="radio1" @change="changeInput" value="multiply"/>multiply(正片叠底)
+    <input type="radio" name="radio1" @change="changeInput" value="normal" checked />normal(正常)
+    <input type="radio" name="radio1" @change="changeInput" value="multiply" />multiply(正片叠底)
     <input type="radio" name="radio1" @change="changeInput" value="screen"/>screen(滤色)
     <input type="radio" name="radio1" @change="changeInput" value="overlay"/>overlay(叠加)
     <input type="radio" name="radio1" @change="changeInput" value="darken"/>darken(变暗)
