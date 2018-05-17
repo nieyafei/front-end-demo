@@ -6,6 +6,7 @@
   * [Flex布局](flex.md)
   * [mix-blend-mode的使用](mix-blend-mode.md)
   * [background-blend-mode的使用](background-blend-mode.md)
+  * [Video的深入使用](video.md)
 
 * 基础和动画特效
   * [圣杯布局](layout-sb.md)
