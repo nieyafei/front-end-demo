@@ -1,0 +1,1731 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+  animation-play-state: var(--play-state, paused) !important;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+:root {
+  --color-top: #E7EEF6;
+  // --c-side: linear-gradient(to left, #626E7A, #343A49);
+  --color-glass: #{rgba(black, 0.6)};
+  
+  --c-top: #DAE0E4;
+  
+  --c-side: #778189;
+  --c-bottom: #444246;
+  --c-bumper: #111;
+  
+  --speed: 2s; // wheel rotation
+  --duration: 30s;
+}
+
+@mixin threed {
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+
+@mixin anim($name) {
+  animation: #{$name} var(--duration) linear infinite;
+  animation-play-state: paused;
+  animation-delay: calc(-1 * var(--duration) * var(--rz, 0))
+}
+
+label[for="animation"] {
+  position: absolute;
+  height: 2rem;
+  color: white;
+  top: 0;
+  left: calc(1.5rem + 20px);
+  line-height: 2rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+#animation {
+  position: absolute;
+  width: 20px;
+  height: 2rem;
+  top: 0;
+  left: 1rem;
+}
+
+label[for="animation"], #animation {
+  opacity: 0.3;
+  transition: opacity .3s;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+#animation:checked ~ * {
+  --play-state: 'running';
+}
+
+#cybertruck {
+  @include threed;
+  --ry: 0deg;
+  width: 340px;
+  height: 930px;
+  transform: rotateX(80deg) rotateZ(calc(var(--rz, 0) * 1turn));
+  
+  @include anim(cybertruck);
+  animation-timing-function: linear;
+  
+  @keyframes cybertruck {
+    from {
+      transform: rotateX(80deg) rotateZ(0turn);
+    }
+    to {
+      transform: rotateX(80deg) rotateZ(1turn);
+    }
+  }
+  
+  .highlight {
+    border-left: 5px solid green;
+    border-top: 5px solid red;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    transform: translateZ(-195px) scale(3, 1.2);
+    box-shadow: 0 0 150px 50px rgba(black, 0.5);
+  }
+}
+
+.side {
+  @include threed;
+  // perspective: 1000px;
+  position: absolute;
+  top: 0;
+  width: 140px;
+  height: 930px;
+  left: 0;
+  transform-origin: left top;
+  transform: rotateY(var(--ry)) translateX(-100%) rotateZ(-2deg);
+  
+  &.-left {
+    --ry: -90deg;
+    
+    &:before {      
+      @include anim(side-left);
+
+      @keyframes side-left {
+        from, to {
+          background: #8B898D;
+          border-color: #4D5055;
+        }
+        50% {
+          background: #A0A5A9;
+          border-color: #5D6369;
+        }
+        75% {
+          background: #676E76;
+          border-color: #454244;
+        }
+      }
+    }
+  }
+  
+  &.-right {
+    --ry: -90deg;
+    
+    &:before {      
+      @include anim(side-right);
+
+      @keyframes side-right {
+        from, to {
+          background: #7C726F;
+          border-color: #73645B;
+        }
+        25% {
+          background: #4B5665;
+          border-color: #34373E;
+        }
+        50%, 75% {
+          background: #545A61;
+          border-color: #454952;
+        }
+      }
+    }
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--c-side);
+    border-left: 50px solid;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      40px 905px,
+      40px 820px,
+      90px 785px,
+      90px 695px,
+      30px 645px,
+      0px 635px,
+      0px 210px,
+      30px 200px,
+      115px 155px,
+      115px 45px,
+      50px 21px,
+      100% 0,
+      0px 0%)
+  }
+  // opacity: 0.5;
+  
+  &.-right {
+    left: 100%;
+    
+    > .bumper {
+      transform: translateZ(-5px);
+    }
+  }
+  
+  > .bumper {
+    position: absolute;
+    left: 0;
+    bottom: 280px;
+    height: 450px;
+    width: 25px;
+    background-color: var(--c-bumper);
+    transform: translateZ(5px);
+    clip-path: polygon(0 10px, 100% 0, 100% 100%, 0 calc(100% - 10px));
+  }
+}
+
+.side.-left .bumper {
+  @include anim(side-left-bumper);
+  
+  @keyframes side-left-bumper {
+    from, to, 50% {
+      background: #3F4245;
+    }
+    75%, 80% {
+      background: #000;
+    }
+    90% {
+      background: #2C2C2D;
+    }
+  }
+}
+
+.side.-right .bumper {
+  @include anim(side-right-bumper);
+  
+  @keyframes side-right-bumper {
+    from, to {
+      background: #3F3129;
+    }
+    25% {
+      background: #000;
+    }
+    50% {
+      background: #34343C;
+    }
+  }
+}
+
+.well {
+  @include threed;
+  height: 100px;
+  position: absolute;
+  width: 20px;
+  
+  &.-front {
+    left: 105px;
+    top: 50px;
+  }
+  
+  &.-back {
+    left: 80px;
+    top: 685px;
+  }
+  
+  &:before, &:after, .well-plate {
+    background-color: var(--c-bumper);
+  }
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &:before {
+    bottom: 100%;
+    transform-origin: bottom right;
+    clip-path: polygon(
+      0 calc(100% - 10px),
+      0 0,
+      100% 0%,
+      100% 100%
+    );
+  }
+  
+  &:after {
+    top: 100%;
+    transform-origin: top right;
+    clip-path: polygon(
+      0 10px,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+  }
+  
+  > .well-plate {
+    transform-origin: right center;
+
+    transform: rotateY(var(--ry));
+    clip-path: polygon(
+      0 10px,
+      100% 0,
+      100% 100%,
+      0 calc(100% - 10px)
+    );
+  }
+  
+  &.-front:before {
+    transform: rotateZ(-60deg) rotateY(var(--ry));
+    clip-path: polygon(0 calc(100% - 10px), 0 40px, 100% 0%, 100% 100%);
+  }
+  
+  &.-front:after {
+    height: 140px;
+    transform: rotateZ(60deg) rotateY(var(--ry));
+    clip-path: polygon(0 10px, 100% 0px, 100% 100%, 10px 100%, 0 calc(100% - 40px));
+  }
+  
+  &.-back:before {
+    height: 110px;
+    transform: rotateZ(-60deg) rotateY(var(--ry));
+    clip-path: polygon(
+      0 calc(100% - 10px),
+      0 45px,
+      100% 0%,
+      100% 100%
+    );
+  }
+  
+  &.-back:after {
+    height: 100px;
+    transform: rotateZ(60deg) rotateY(var(--ry));
+    clip-path: polygon(
+      100% 100%,
+      0% calc(100% - 45px),
+      0% 10px,
+      100% 0%
+    );
+  }
+  
+  --ry: 30deg;
+  
+  .side.-right & {
+    --ry: -30deg;
+  }
+}
+
+.side.-left {
+  .well {
+    &:after {
+      @include anim(left-well-back-after);
+      
+      @keyframes left-well-back-after {
+        from, to {
+          background: #373438;
+        }
+        25%, 90% {
+          background: #000;
+        }
+      }
+    }
+    
+    .well-plate {
+      @include anim(left-well-plate);
+      
+      @keyframes left-well-plate {
+        from, to, 25% {
+          background: #717476;
+        }
+        50% {
+          background: #6D7174;
+        }
+        75% {
+          background: #000;
+        }
+      }
+    }
+    
+    &:before {
+      @include anim(left-well-back-before);
+      
+      @keyframes left-well-back-before {
+        from, to {
+          background: #000;
+        }
+        50% {
+          background: #747C7D;
+        }
+        55% {
+          background: #909798;
+        }
+        75% {
+          background: #000;
+        }
+      }
+    }
+  }
+}
+
+.side.-right {
+  .well {
+    &:after {
+      @include anim(right-well-back-after);
+      
+      @keyframes right-well-back-after {
+        from, to, 25% {
+          background: #000;
+        }
+        30% {
+          background: #3A3F41;
+        }
+      }
+    }
+    
+    .well-plate {
+      @include anim(right-well-plate);
+      
+      @keyframes right-well-plate {
+        from, to {
+          background: #616263;
+        }
+        25% {
+          background: #000;
+        }
+        50% {
+          background: #42474B;
+        }
+      }
+    }
+    
+    &:before {
+      @include anim(right-well-back-before);
+      
+      @keyframes right-well-back-before {
+        from, to {
+          background: #000;
+        }
+        20% {
+          background: #202225;
+        }
+        30% {
+          background: #000;
+        }
+        50% {
+          background: #14161A;
+        }
+      }
+    }
+  }
+}
+
+.well-plate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.top-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 105px;
+  transform-origin: right;
+  transform: rotateY(160deg);
+  transform-style: preserve-3d;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(
+      100% 100%,
+      100% 0%,
+      0% 410px,
+      10px 410px,
+      85px 110px,
+      85px 590px,
+      45px 585px,
+      10px 410px,
+      0 410px
+    );
+    z-index: 2;
+  }
+  
+  .side.-left > & {
+    transform: rotateY(-160deg);
+  }
+  
+  .side.-left > &:before {
+    @include anim(top-side-left);
+    @keyframes top-side-left {
+      from, to, 25% {
+        background: #9A9DA2;
+      }
+      50% {
+        background: #9DA3A8;
+      }
+      75% {
+        background: white;
+      }
+    }
+  }
+  
+  .side.-right > &:before {
+    @include anim(top-side-right);
+    @keyframes top-side-right {
+      from, to {
+        background: #878688;
+      }
+      25% {
+        background: #737D86;
+      }
+      50%, 75% {
+        background: #676D74;
+      }
+    }
+  }
+}
+
+
+.ball-bearing,
+.windows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ball-bearing { 
+  z-index: 2;
+  opacity: 0;
+}
+
+.windows {
+  @include threed;
+  transform-origin: left;
+  clip-path: polygon(
+    85px 100px,
+    10px 410px,
+    45px 585px,
+    85px 590px
+  );
+  transform: rotateY(5deg);
+  background: rgba(0,0,0,0.5);
+  
+  .side.-left & {
+    transform: rotateY(-5deg);
+  }
+}
+
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  // background-color: #fff;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.5);
+  }
+  
+  &.-driver {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(
+      to bottom,
+      #000,
+      #000 20px,
+      transparent 20px,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px),
+      #000
+    );
+  }
+  
+  &.-passenger {
+    position: absolute;
+    top: 420px;
+    left: 0;
+    width: 100%;
+    height: 170px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 20px,
+      transparent calc(100% - 20px),
+      #000 calc(100% - 20px),
+      #000
+    );
+  }
+}
+
+.door {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  border-top: 2px solid rgba(black, 0.1);
+  border-bottom: 2px solid rgba(black, 0.1);
+  
+  &.-front {
+    top: 215px;
+    left: 0;
+    border-bottom: none;
+  }
+  
+  &.-back {
+    top: 415px;
+    left: 0;
+    height: 185px;
+    transform-origin: top right;
+    transform: skewY(5deg);
+  }
+}
+
+.front {
+  @include threed;
+  position: absolute;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  height: 455px;
+  transform-origin: left 35px;
+  transform: rotateX(16deg);
+  
+  > .frunk, > .windshield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(
+      10% 100%,
+      0 35px,
+      40px 0,
+      calc(100% - 40px) 0,
+      100% 35px,
+      90% 100%
+    );
+  }
+}
+
+.windshield {
+  &:before {
+    border: 20px solid #111;
+    border-width: 25px 40px 20px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 325px;
+    background: rgba(black, 0.5);
+  }
+  
+  > .light {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to top,
+      #000,
+      #000 40%,
+      transparent);
+    
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 15%;
+      width: 70%;
+      height: 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 30px 30px rgba(white, 0.2);
+    }
+  }
+}
+
+.frunk {
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 135px;
+    
+    @include anim(frunk);
+    @keyframes frunk {
+      from, to {
+        background: #ABB1B4;
+      }
+      25% {
+        background: #ABB1B4;
+      }
+      40% {
+        background: #BCC4C8;
+      }
+      50% {
+        background: #656C72;
+      }
+      75% {
+        background: #9EA4A7;
+      }
+    }
+  }
+}
+
+
+.back {
+  @include threed;
+  height: 580px;
+  width: 100%;
+  top: 100%;
+  position: absolute;
+  transform-origin: top center;
+  transform: rotateX(-27deg);
+  
+  &:before {
+    background: rgba(black, 0.8);
+    border: 20px solid black;
+    border-width: 20px 40px;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 185px;
+    clip-path: polygon(
+      35px 0,
+      calc(100% - 35px) 0,
+      calc(100% - 20px) 100%,
+      20px 100%
+    );
+  }
+}
+
+.trunk {
+  @include threed;
+  position: absolute;
+  top: 185px;
+  height: 180px;
+  width: calc(100% - 44px);
+  left: 22px;
+  transform-origin: top left;
+  transform: rotateX(-80deg);
+  
+  &:before, &:after {    
+    @include anim(trunk);
+
+    @keyframes trunk {
+      from, to {
+        color: #51545F;
+      }
+      25%, 50% {
+        color: #434950;
+      }
+      75% {
+        color: #23252E;
+      }
+    }
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(black, 0.5);
+    border: 20px solid currentColor;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: currentColor;
+    border-top: 5px solid rgba(black, 0.5);
+    transform-origin: top;
+    transform: rotateX(5deg);
+  }
+}
+
+.trunk-side {
+  @include threed;
+  position: absolute;
+  top: 0;
+  width: 320px;
+  height: 160px;
+  transform-origin: top left;
+  transform: skewY(7deg);
+  
+  
+  &:before {
+    content: '';
+    background-color: var(--c-top);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: top left;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 50%,
+      0% 100%,
+    );
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background-color: #fff;
+    bottom: 100%;
+    transform-origin: bottom;
+    clip-path: polygon(
+      0 calc(100% - 2px),
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+    
+    @include anim(trunk-side-top);
+    
+    @keyframes trunk-side-top {
+      from, to {
+        background: #4E4B4C;
+      }
+      25% {
+        background: #969D9E;
+      }
+      50% {
+        background: #575B5E;
+      }
+      75% {
+        background: #3E4243;
+      }
+    }
+  }
+  
+  &.-left {
+    left: 0;
+    transform: rotateY(-90deg) skewY(7deg);
+    
+    &:after {
+      transform: rotateX(-90deg);
+    }
+    
+    &:before {
+      @include anim(trunk-side-left-before);
+    
+      @keyframes trunk-side-left-before {
+        from, to {
+          background: #3C2E2F;
+        }
+        25% {
+          background: #3D4A5A;
+        }
+        50%, 75% {
+          background: #292C33;
+        }
+      }
+    }
+  }
+
+  &.-right {
+    left: 100%;
+    transform: rotateY(-90deg) skewY(7deg);
+    
+    &:after {
+      transform: rotateX(90deg);
+    }
+    
+    &:before {
+      @include anim(trunk-side-right-before);
+    
+      @keyframes trunk-side-right-before {
+        from, to, 25% {
+          background: #4C4D53;
+        }
+        50% {
+          background: #53595F;
+        }
+        75% {
+          background: #555962;
+        }
+      }
+    }
+  }
+}
+
+
+.bed {
+  @include threed;
+  position: absolute;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  background: #ddd;
+  transform-origin: top center;
+  transform: rotateX(91deg);
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(35px);
+    
+    @include anim(bed);
+    
+    @keyframes bed {
+      from, to {
+        background: #6E6C71;
+      }
+      25% {
+        background: #C5CED1;
+      }
+      50% {
+        background: #4E575E;
+      }
+      75% {
+        background: #555D65;
+      }
+    }
+  }
+}
+
+.tailgate {
+  // display: none;
+  @include threed;
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 95px;
+  background: var(--c-side);
+  transform-origin: bottom center;
+  transform: rotateX(-100deg);
+  
+  @include anim(tailgate);
+  
+  @keyframes tailgate {
+    from, to {
+      background: #4D535C;
+    }
+    25%, 50%, 75% {
+      background: #898D91;
+    }
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #fff;
+    transform-origin: top center;
+    transform: rotateX(275deg);
+    @include anim(trunk-side-top);
+  }
+  
+  > .bumper {
+    @include threed;
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    top: calc(100% + 10px);
+    
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - 10px),
+        calc(100% - 60px) 100%,
+        60px 100%,
+        0 calc(100% - 10px)
+      );
+      
+      @include anim(tailgate-bumper);
+
+      @keyframes tailgate-bumper {
+        from, to, 10% {
+          background: #010103;
+        }
+        25% {
+          background: #4C4F53;
+        }
+        75% {
+          background: #393D42;
+        }
+      }
+    }
+    
+  }
+  
+  .bumper-left, .bumper-right {
+    @include threed;
+    position: absolute;
+    top: 0;
+    width: 90px;
+    height: 100%;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      bottom: 100%;
+      transform-origin: bottom center;
+      transform: rotateX(90deg);
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(
+        0 0, 100% 0,
+        calc(100% - 30px) 100%,
+        0px calc(100% - 10px)
+      );
+    }
+  }
+  
+  .bumper, .bumper-left, .bumper-right {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      bottom: 100%;
+      transform-origin: bottom center;
+      transform: rotateX(90deg);
+    }
+  }
+  
+  .bumper-left {
+    right: 100%;
+    transform-origin: right;
+    transform: rotateY(-90deg) skewY(-12deg);
+    
+    &:after {      
+      @include anim(bumper-left);
+
+      @keyframes bumper-left {
+        from, to, 25% {
+          background: #2A272B;
+        }
+        50% {
+          background: #54565A;
+        }
+        65% {
+          background: #2D2F32;
+        }
+        75%, 90% {
+          background: #000;
+        }
+      }
+    }
+  }
+  
+  .bumper-right {
+    left: 100%;
+    transform-origin: left;
+    transform: rotateY(90deg) skewY(12deg);
+    
+    &:after {      
+      @include anim(bumper-right);
+
+      @keyframes bumper-right {
+        from, to {
+          background: #2A2220;
+        }
+        25% {
+          background: #050204;
+        }
+        30% {
+          background: #000;
+        }
+        35% {
+          background: #09090D;
+        }
+        50% {
+          background: #25262C;
+        }
+        80% {
+          background: #3B3E45;
+        }
+      }
+    }
+  }
+  
+  > .light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: #000;
+    padding: 5px;
+    
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    &:before {
+      --light: #FD004A;
+      border-radius: 5px;
+      background-color: #FD004A;
+      width: calc(100% - 10px);
+      left: 5px;
+      height: calc(100% - 10px);
+      top: 5px;
+      box-shadow: 0 0 2rem 1rem rgba(#FD004A, 0.3);
+    }
+  }
+}
+
+.grill {
+  @include threed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  // background: var(--c-side);
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+
+.grill-left, .grill-right {
+  position: absolute;
+  height: 100%;
+  width: 60px;
+  transform-origin: right center;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--c-side);
+    clip-path: polygon(10px 0, 100% 0, 100% 90px, 10px 100%);
+  }
+  
+  > .light {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+      white,
+      white 5px,
+      transparent 5px,
+      transparent calc(100% - 5px),
+      #E2B80E calc(100% - 5px),
+      #E2B80E
+    );
+    
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 5px;
+    }
+    
+    &:before {
+      box-shadow: 0 0 50px 20px rgba(white, 0.5);
+    }
+    
+    &:after {
+      bottom: 0;
+      background-color: #E2B80E;
+    }
+  }
+}
+
+.grill-left {
+  left: -20px;
+  transform: rotateY(38deg);
+  
+  &:before {
+    @include anim(grill-left);
+    
+    @keyframes grill-left {
+      from, to {
+        background: #494A4C;
+      }
+      25% {
+        background: #494A4C;
+      }
+      50% {
+        background: #4E4F54;
+      }
+      65%, 75% {
+        background: #60676F;
+      }
+    }
+  }
+}
+
+.grill-right {
+  transform: rotateY(142deg);
+  right: 40px;
+  
+  &:before {
+    @include anim(grill-right);
+    
+    @keyframes grill-right {
+      from, to, 50% {
+        background: #5F5A62;
+      }
+      65% {
+        background: #53585F;
+      }
+      75% {
+        background: #505153;
+      }
+      85% {
+        background: #6A6764;
+      }
+    }
+  }
+}
+
+
+.grill-front {
+  @include threed;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: calc(100% - 40px * 2);
+  height: 100%;
+  background-color: var(--c-side);
+  
+  @include anim(grill-front);
+  
+  @keyframes grill-front {
+    from, to {
+      background: #747176;
+    }
+    25% {
+      background: #747176;
+    }
+    50% {
+      background: #515254;
+    }
+    75% {
+      background: #686463;
+    }
+  }
+  
+  > .light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 60px 30px rgba(white, 0.5)
+  }
+  
+  > .bumper {
+    @include threed;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: var(--c-bumper);
+    
+    > .bumper-left,
+    > .bumper-right {
+      position: absolute;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      background-color: var(--c-bumper);
+    }
+    
+    > .bumper-left {
+      transform-origin: left center;
+      transform: rotateY(-35deg);
+      left: 100%;
+    }
+    
+    > .bumper-right {
+      transform-origin: right center;
+      transform: rotateY(35deg);
+      right: 100%;
+    }
+  }
+}
+
+.oops {
+  appearance: none;
+  border: none;
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background: #fff;
+  background: radial-gradient(white, transparent, rgba(white, 0.2), transparent 50%);
+  cursor: pointer;
+  
+  &, &:before, &:after {
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  
+  &:focus {
+    outline: none;
+    &, &:before, &:after {
+      opacity: 1;
+    }
+  }
+  
+  .window.-driver & {
+    top: 100px;
+    left: 20px
+  }
+  
+  &:before,
+  &:after {
+    opacity: 0;
+    --crack: #{rgba(white, 0.3)};
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--crack),
+      var(--crack) 1deg,
+      transparent 1deg,
+      transparent 30deg,
+      var(--crack) 30deg,
+      var(--crack) 31deg,
+      transparent 31deg,
+      transparent 40deg,
+      var(--crack) 35deg,
+      var(--crack) 36deg,
+      transparent 36deg,
+      transparent 70deg,
+      var(--crack) 70deg,
+      var(--crack) 71deg,
+      transparent 71deg,
+      transparent 80deg,
+      var(--crack) 80deg,
+      var(--crack) 81deg,
+      transparent 81deg
+    );
+  }
+  &:before {
+    transform: rotate(160deg);
+  }
+}
+
+/* ---------------------------------- */
+
+.body {
+  @include threed;
+  animation: suspension-body calc(var(--duration) / 4) cubic-bezier(.5, 0, .5, 1) 0s infinite;
+  
+  @keyframes suspension-body {
+    from, to, 50%, 75% {
+      transform: none;
+    }
+    35%, 65% {
+      transform: translateZ(10px)
+    }
+  }
+}
+
+.wheels {
+  @include threed;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  transform: translateZ(-120px);
+  background-color: #000;
+  
+//   &:before, &:after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     width: 90px;
+//     height: 90%;
+//     background-color: #000;
+//     clip-path: polygon(
+//       0 10%,
+//       100% 0,
+//       100% 90%,
+//       50% 100%,
+//       0 100%
+//     )
+//   }
+  
+//   &:before {
+//     left: 18px;
+//     transform-origin: left;
+//     transform: rotateY(-90deg);
+//   }
+  
+//   &:after {
+//     right: 18px;
+//     transform-origin: right;
+//     transform: rotateY(90deg);
+    
+//   }
+}
+
+.wheel {
+  @include threed;
+  --radius: 70px;
+  --size: calc(var(--radius) * 2);
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: #202234;
+  background-image: linear-gradient(to bottom, #1F2024, darken(#1F2024, 10%));
+  transform-origin: center;
+  transform: rotateY(90deg);
+  
+  animation: wheel var(--speed) infinite linear;
+  
+  @keyframes wheel {
+    from {
+      transform: rotateY(90deg) rotateZ(0deg);
+    }
+    to {
+      transform: rotateY(90deg) rotateZ(360deg);
+    }
+  }
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    background: inherit;
+    height: 100%;
+    width: 100%;
+  }
+  &:before {
+    transform: translateZ(20px);
+    background: radial-gradient(
+      black,
+      black 25%,
+      #333 50%,
+      #222 50%,
+      black,
+    black);
+  }
+  &:after {
+    transform: translateZ(-20px);
+    background: radial-gradient(
+      black,
+      black 25%,
+      #333 50%,
+      #222 50%,
+      black,
+    black);
+  }
+  
+  &.-front {
+    top: 35px;
+  }
+  
+  &.-back {
+    top: 670px;
+  }
+  
+  &.-left {
+    left: calc(var(--size) / -2);
+    --spoke-z: -25px;
+  }
+  
+  &.-right {
+    
+    left: calc(100% - var(--size) / 2);
+    --spoke-z: 25px;
+  }
+}
+
+.spoke {
+  @include threed;
+  --r: 0deg;
+  --ry: -5deg;
+  position: absolute;
+  width: 50%;
+  height: 20px;
+  transform:
+    scale(0.7)
+    rotateZ(var(--r))
+    translateZ(var(--spoke-z))
+    rotateY(var(--ry));  
+  ;
+  transform-origin: right center;
+  top: calc(50% - 10px);
+  
+  @for $i from 1 through 7 {
+    &:nth-child(#{$i}) {
+      --i: #{$i};
+      --r: #{360 * $i / 7}deg;
+    }
+  }
+  
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    z-index: 1;
+    animation: spoke-after var(--speed) linear infinite;
+    animation-delay: calc(-1 * var(--speed) * var(--rz, 0) - (var(--speed) / 7) * var(--i));
+  }
+  
+  &:before {
+    right: 50px;
+    width: 20px;
+    animation-name: spoke-before;
+    transform-origin: right center;
+    transform: rotateY(calc(-4 * var(--ry)));
+    // background-color: #fff;
+    @keyframes spoke-before {
+      from, to {
+        background: #43494A;
+      }
+      50% {
+        background: #000
+      }
+    }
+  }
+  
+  &:after {
+    right: 0;
+    width: 50px;
+    background-color: #000;   
+    // border-left: 20px solid blue;
+    border-radius: 5px;
+    animation: spoke-after var(--speed) linear infinite;
+    animation-delay: calc(-1 * var(--speed) * var(--rz, 0) - (var(--speed) / 7) * var(--i));
+    // animation-play-state: paused;
+    
+    @keyframes spoke-after {
+      from, to {
+        background: #000;
+        border-left-color: #43494A;
+      }
+      50% {
+        background: #43494A;
+        border-left-color: #000
+      }
+    }
+  }
+  
+  .wheel.-right & {
+    --ry: 5deg;
+  }
+}
+
+.wheel > .tread {
+  --size: calc(2 * 3.141592653589 * var(--radius) / 12);
+  position: absolute;
+  width: 40px;
+  height: var(--size);
+  background: linear-gradient(to left, black, #111, black);
+  z-index: 1;
+  top: 0;
+  left: calc(50% + var(--size) / 2);
+  transform-origin: top left;
+  transform: translateZ(-20px) rotateZ(90deg) rotateY(-90deg);
+}
+
+.tread {
+  @include threed;
+  --rx: calc(360deg / 12);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: rotateX(30deg);
+  }
+  
+  &:before {
+    top: 100%;
+    transform-origin: top center;
+    transform: rotateX(calc(var(--rx) * -1));
+  }
+  
+  &:after {
+    bottom: 100%;
+    transform-origin: bottom center;
+    transform: rotateX(var(--rx));
+  }
+  
+  width: 100%;
+  height: 100%;
+  
+  > .tread {
+    transform-origin: bottom center;
+    transform:
+      translateY(-100%)
+      rotateX(var(--rx))
+      translateY(-100%)
+      rotateX(var(--rx))
+      translateY(-100%)
+      rotateX(var(--rx))
+      ;
+    background: inherit;
+  }
+}
+
+.hubcap {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to right,
+    #4F5658,
+    black
+  );
+  background-image: conic-gradient(
+     #505658 .1428turn,
+    #2E3234 .1428turn .2857turn,
+    #111317 .2857turn .4285turn,
+    black .4285turn,
+    #121518 .7142turn .8571turn,
+    #303437 .8571turn
+  );
+  transform: translateZ(30px);
+  clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+  
+  .wheel.-left & {
+    transform: translateZ(-30px);
+  }
+}
+
+.stage {
+  @include threed;
+  @include anim(cinematic);
+    // animation: cinematic calc(var(--duration) * 2) cubic-bezier(.5, 0, .5, 1) infinite;
+  @keyframes cinematic {
+    from, to {
+      transform: scale(0.5) translateX(50%);
+    }
+    50% {
+      transform: scale(0.7) translateX(0);
+    }
+  }
+  
+  // transform: scale(1) translateX(50%);
+}
+
+html {
+  background: radial-gradient(#1C1C20, #0B0B0D);
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
