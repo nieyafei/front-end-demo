@@ -18,6 +18,7 @@
   * [头像的动画](basic.md)
 
 * CSS3-Loading
+  * [常用loading<span class='new'></span>](loading.md)
   * [多彩圆环](loading-1.md)
 
 * Background

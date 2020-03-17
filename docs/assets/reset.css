@@ -124,3 +124,7 @@
     width: 700px;
     margin:100px auto;
   }
+.code-scroll .CodeMirror-scroll{
+  height: 300px;
+  margin-right: 0;
+}
