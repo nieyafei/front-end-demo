@@ -68,6 +68,66 @@
         <p class="name">序号：05</p>
       </div>
     </div>
+    <div class="item">
+      <div>
+        <div class="loading-06">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="name">序号：06</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-07">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="name">序号：07</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-08">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="name">序号：08</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-09">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <p class="name">序号：09</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-10">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <p class="name">序号：10</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-11">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <p class="name">序号：11</p>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="loading-12"></div>
+        <p class="name">序号：12</p>
+      </div>
+    </div>
   </div>
   
 </div>
@@ -77,7 +137,7 @@
 
 ### `css代码` 
 
-[loading-css](http://codehtml.cn/front-end-demo/assets/css/loading.css)
+[请查看：loading-css](http://codehtml.cn/front-end-demo/assets/css/loading.css)
 
 - 序号01
 ```css
