@@ -706,10 +706,314 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
 }
-/* -------------------- 03 -------------------- */
+/* -------------------- 13 -------------------- */
+.loading-13 {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loading-13:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #f66;
+  border-color: #f66 transparent #f66 transparent;
+  animation: loading-13-ring 1.2s linear infinite;
+}
+@keyframes loading-13-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* -------------------- 14 -------------------- */
+.loading-14 {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-14 div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #f66;
+  border-radius: 50%;
+  animation: loading-14 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #f66 transparent transparent transparent;
+}
+.loading-14 div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-14 div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-14 div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loading-14 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* -------------------- 15 -------------------- */
+.loading-15 {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-15 div {
+  animation: loading-15 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.loading-15 div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f66;
+  margin: -4px 0 0 -4px;
+}
+.loading-15 div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.loading-15 div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.loading-15 div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.loading-15 div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.loading-15 div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.loading-15 div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.loading-15 div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.loading-15 div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.loading-15 div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.loading-15 div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.loading-15 div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.loading-15 div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.loading-15 div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.loading-15 div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.loading-15 div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.loading-15 div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes loading-15 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-/* -------------------- 03 -------------------- */
-
-/* -------------------- 03 -------------------- */
-
-/* -------------------- 03 -------------------- */
+/* -------------------- 16 -------------------- */
+.loading-16 {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-16 div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #f66;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.loading-16 div:nth-child(1) {
+  left: 8px;
+  animation: loading-161 0.6s infinite;
+}
+.loading-16 div:nth-child(2) {
+  left: 8px;
+  animation: loading-162 0.6s infinite;
+}
+.loading-16 div:nth-child(3) {
+  left: 32px;
+  animation: loading-162 0.6s infinite;
+}
+.loading-16 div:nth-child(4) {
+  left: 56px;
+  animation: loading-163 0.6s infinite;
+}
+@keyframes loading-161 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes loading-163 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes loading-162 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+/* -------------------- 17 -------------------- */
+.loading-17{
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-17 div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f66;
+  animation: loading-17 1.2s linear infinite;
+}
+.loading-17 div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+.loading-17 div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+.loading-17 div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+.loading-17 div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.loading-17 div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+.loading-17 div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+.loading-17 div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.loading-17 div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+.loading-17 div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+@keyframes loading-17 {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+/* -------------------- 18 -------------------- */
+.loading-18 {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-18 div {
+  position: absolute;
+  border: 4px solid #f66;
+  opacity: 1;
+  border-radius: 50%;
+  animation: loading-18 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.loading-18 div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes loading-18 {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
+/* --------------------  -------------------- */
